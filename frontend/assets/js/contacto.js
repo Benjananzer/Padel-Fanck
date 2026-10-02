@@ -1,0 +1,77 @@
+<main>
+  <section class="contact-section">
+    <div class="contact-container">
+      
+      <!-- COLUMNA IZQUIERDA: INFORMACIÓN DE CONTACTO -->
+      <div class="contact-info">
+        <div class="badge">• ESTAMOS PARA AYUDARTE</div>
+        <h2>Ponete en contacto con nosotros</h2>
+        <p>¿Tenés dudas sobre las reservas, los torneos o las clases? Escribinos por cualquier de nuestros canales y te responderemos a la brevedad.</p>
+        
+        <div class="info-items">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5491122334455" target="_blank" class="info-item">
+            <div class="info-icon whatsapp">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a0.5.5 0 0 0 1 0V9a0.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a0.5.5 0 0 0 0-1h-1a0.5.5 0 0 0 0 1"/></svg>
+            </div>
+            <div class="info-text">
+              <h4>WhatsApp</h4>
+              <p>+54 9 11 2233-4455</p>
+            </div>
+          </a>
+
+          <!-- Correo -->
+          <div class="info-item">
+            <div class="info-icon email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="info-text">
+              <h4>Correo Electrónico</h4>
+              <p>contacto@padelfranck.com.ar</p>
+            </div>
+          </div>
+
+          <!-- Ubicación abreviada (puedes enlazar a ubicacion.html) -->
+          <a href="ubicacion.html" class="info-item">
+            <div class="info-icon location">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-text">
+              <h4>Nuestro Complejo</h4>
+              <p>Franck, Santa Fe, Argentina</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: FORMULARIO DE CONTACTO -->
+      <div class="contact-form-card">
+        <h3>Envianos un mensaje</h3>
+        <p>Completá el formulario y nos comunicaremos con vos.</p>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required class="custom-input">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="Ej: juan@email.com" required class="custom-input">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tu mensaje</label>
+            <textarea id="message" name="message" placeholder="Escribí tu consulta aquí..." rows="6" required class="custom-input"></textarea>
+          </div>
+
+          <button type="submit" class="btn-hero btn-submit">
+            <span>Enviar Mensaje</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+</main>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padel Franck - Reservar</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header>
+    <a href="Inicio.html" class="logo-brand">
+      PADEL <span>FRANCK</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="Inicio.html">Inicio</a></li>
+        <li><a href="reservar.html" class="active">Reservar</a></li>
+        <li><a href="torneos.html">Torneos</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="booking-wrapper">
+    <div class="booking-card-main">
+      
+      <!-- 1. ELEGÍ EL DÍA -->
+      <div class="booking-step">
+        <div class="step-title">
+          <span class="step-badge">1</span>
+          <h3>Elegí el día</h3>
+        </div>
+        <div class="days-carousel" id="days-container"></div>
+      </div>
+
+      <!-- 2. ELEGÍ LA CANCHA -->
+      <div class="booking-step">
+        <div class="step-title">
+          <span class="step-badge">2</span>
+          <h3>Elegí la cancha</h3>
+        </div>
+        <div class="courts-row">
+          <button type="button" class="court-tab active" data-court="1">Cancha 1</button>
+          <button type="button" class="court-tab" data-court="2">Cancha 2</button>
+          <button type="button" class="court-tab" data-court="3">Cancha 3</button>
+        </div>
+      </div>
+
+      <!-- 3. ELEGÍ EL HORARIO -->
+      <div class="booking-step">
+        <div class="step-title inline">
+          <div class="title-left">
+            <span class="step-badge">3</span>
+            <h3>Elegí el horario</h3>
+          </div>
+          <span class="price-info">1:30 hs • $15.000</span>
+        </div>
+        
+        <div class="slots-grid-exact" id="slots-container"></div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN MIS TURNOS -->
+    <div class="my-turnos-section">
+      <div class="my-turnos-header">
+        <h3>Mis turnos</h3>
+        <span class="user-email">• benjananxer93@gmail.com</span>
+      </div>
+      <div class="my-turnos-card" id="my-turnos-list">
+        <p class="empty-state">Todavía no tenés turnos reservados.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL DE PAGO Y CONFIRMACIÓN -->
+  <div class="modal-overlay" id="payment-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close">&times;</button>
+      
+      <div id="modal-step-payment">
+        <div class="badge">• PROCESO DE PAGO</div>
+        <h3>Confirmar Turno</h3>
+        <p class="modal-subtitle" id="modal-summary-text">Cancha 1 — HOY (18:30 – 20:00)</p>
+        <div class="price-tag-modal">Monto a pagar: <span>$15.000</span></div>
+        
+        <!-- Métodos de Pago -->
+        <div class="payment-methods">
+          <label class="payment-option active">
+            <input type="radio" name="payment" value="Tarjeta" checked>
+            <span class="pay-icon">💳</span>
+            <span>Tarjeta Débito/Crédito</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="Mercado Pago / QR">
+            <span class="pay-icon">📱</span>
+            <span>Mercado Pago / QR</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="Transferencia / Alias">
+            <span class="pay-icon">🏦</span>
+            <span>Alias / Transferencia</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="Efectivo en el complejo">
+            <span class="pay-icon">💵</span>
+            <span>Efectivo en el Complejo</span>
+          </label>
+        </div>
+
+        <!-- CONTENIDOS DINÁMICOS POR MÉTODO DE PAGO -->
+        <div class="payment-details-box">
+          
+          <!-- 1. Formulario Tarjeta -->
+          <div id="pay-detail-tarjeta" class="pay-detail-panel">
+            <input type="text" placeholder="Número de Tarjeta (16 dígitos)" class="custom-input" maxlength="19" required>
+            <div class="input-row">
+              <input type="text" placeholder="MM/AA" class="custom-input" maxlength="5" required>
+              <input type="password" placeholder="CVC (3 dígitos)" class="custom-input" maxlength="4" required>
+            </div>
+            <input type="text" placeholder="Nombre completo del Titular" class="custom-input" required>
+          </div>
+
+          <!-- 2. QR Mercado Pago -->
+          <div id="pay-detail-qr" class="pay-detail-panel hidden">
+            <p class="pay-instruction">Escaneá el código QR desde la App de Mercado Pago o tu banco:</p>
+            <div class="qr-container">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PADEL.FRANCK.MP" alt="Código QR Mercado Pago">
+              <span class="qr-amount">Monto: $15.000 ARS</span>
+            </div>
+          </div>
+
+          <!-- 3. Alias / Transferencia -->
+          <div id="pay-detail-alias" class="pay-detail-panel hidden">
+            <p class="pay-instruction">Transferí $15.000 a los siguientes datos:</p>
+            <div class="alias-box">
+              <div class="alias-info">
+                <span>ALIAS:</span>
+                <strong id="alias-text">PADEL.FRANCK.MP</strong>
+              </div>
+              <button type="button" class="btn-copy" id="btn-copy-alias">Copiar</button>
+            </div>
+            <p class="cbu-sub">CBU: 0000003100049281739201 — Titular: Padel Franck SRL</p>
+          </div>
+
+          <!-- 4. Efectivo -->
+          <div id="pay-detail-efectivo" class="pay-detail-panel hidden">
+            <p class="pay-instruction">Abonás los <strong>$15.000</strong> en la recepción del complejo antes de ingresar a la cancha.</p>
+          </div>
+
+        </div>
+
+        <button class="btn-hero btn-pay" id="btn-confirm-payment">CONFIRMAR Y RESERVAR ($15.000)</button>
+      </div>
+
+      <!-- VISTA DE ÉXITO -->
+      <div id="modal-step-success" class="success-view hidden">
+        <div class="success-icon">🎉</div>
+        <h3>¡Reserva Confirmada!</h3>
+        <p>Tu cancha quedó agendada con éxito.</p>
+        <div class="success-ticket" id="success-ticket-info"></div>
+        <button class="btn-hero btn-pay" id="btn-success-close">Aceptar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-socials">
+        <a href="https://wa.me/5491122334455" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a0.5.5 0 0 0 1 0V9a0.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a0.5.5 0 0 0 0-1h-1a0.5.5 0 0 0 0 1"/></svg>
+        </a>
+        <a href="https://instagram.com/padelfranck" target="_blank" class="social-btn instagram" title="Instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://facebook.com/padelfranck" target="_blank" class="social-btn facebook" title="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+      <p>&copy; 2026 Padel Franck. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/reservar.js"></script>
+</body>
+</html>
